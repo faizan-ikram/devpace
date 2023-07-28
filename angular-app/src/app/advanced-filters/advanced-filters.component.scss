@@ -1,0 +1,72 @@
+
+$color_1: #f7911d;
+$color_2: grey;
+$background-color_2: #ffffff;
+$background-color_3: #f7911d;
+
+.advanced-filters {
+    background-color: rgb(250, 250, 250);
+
+    input {
+        line-height: 5ex;
+        border-radius: 5px;
+        &:focus,
+        &:focus-visible {
+            // border: 1px solid lightgray;
+            outline: none !important;
+        }
+
+        &.w-full {
+            width: 90%;
+        }
+
+        &.filters-expiration {
+            line-height: 4.5ex;
+        }
+    }
+
+    .datepicker-container {
+        position: relative;
+
+        .input-container {
+            display: flex;
+            align-items: center;
+            position: relative;
+
+            input {
+                width: 90% !important;
+            }
+
+            button {
+                position: absolute;
+                right: 11%;
+                border: none;
+                background-color: $background-color_2;
+            }
+        }
+
+        label {
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            z-index: 1;
+            background-color: white;
+            padding: 0 2px 0 2px;
+        }
+    }
+}
+
+input.form-check-input {
+    &:checked {
+        background-color: $background-color_3;
+    }
+
+    &:focus {
+        box-shadow: none;
+    }
+}
+
+.clear-btn {
+    background-color: inherit;
+    color: $color_1;
+}

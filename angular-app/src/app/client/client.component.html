@@ -1,0 +1,33 @@
+<div class="clients-table-wrapper ms-5 ms-md-0 client-table-top-div">
+  <div class="row">
+    <h3 class="col-md-4">Clients:</h3>
+    <app-filters class="col-md-8" (searchChanged)="applyFilter($event)" (advancedFiltersClicked)="toggleAdvancedFilters()"></app-filters>
+  </div>
+  <app-advanced-filters *ngIf="showAdvancedFilters" (filterChanged)="onFilterChanged($event)"
+  (clearFilter)="onClearFilter()"></app-advanced-filters>
+  <div class="clients-table" *ngIf="clients">
+    <table class="table table-borderless" mat-table [dataSource]="sortedClients" matSort>
+      <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
+        <th class="fw-normal border-bottom" mat-header-cell *matHeaderCellDef mat-sort-header>{{
+          capitalizeWords(column.replace('_', ' ')) }}</th>
+        <td mat-cell *matCellDef="let client">
+          <ng-container *ngIf="column === 'active'">
+            <img *ngIf="client[column]" src="assets/images/baseline-check-24px.svg" alt="Image 1" />
+            <img *ngIf="!client[column]" src="assets/images/baseline-empty-24px.svg" alt="Image 2" />
+          </ng-container>
+          <ng-container *ngIf="column !== 'active'">
+            {{ client[column] }}
+          </ng-container>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+  <div class="gradient-overlay"></div>
+  <div class="button-container">
+    <button (click)="toggleDrawer()" class="button-add"><img src="assets/images/outline-add-24px.svg" alt=""></button>
+  </div>
+</div>
+<app-drawer [isOpen]="isDrawerOpen" (drawerClosed)="closeDrawer()"></app-drawer>
+<div class="drawer-overlay" [hidden]="!isDrawerOpen"></div>

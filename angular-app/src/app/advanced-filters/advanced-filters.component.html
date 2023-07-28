@@ -1,0 +1,49 @@
+<div class="row advanced-filters pt-4">
+    <div class="col-md-2 p-0">
+        <mat-form-field appearance="outline">
+            <input matInput [(ngModel)]="filter_first_name" (ngModelChange)="applyFilters()">
+            <mat-label>First Name</mat-label>
+        </mat-form-field>
+    </div>
+    <div class="col-md-2 p-0">
+        <mat-form-field appearance="outline">
+            <mat-label>Last Name</mat-label>
+            <input matInput [(ngModel)]="filter_last_name" (ngModelChange)="applyFilters()">
+        </mat-form-field>
+    </div>
+    <div class="col-md-3 p-0">
+        <div class="datepicker-container">
+            <label class="top-label" *ngIf="filter_expiration_date" for="expiration_date">Expiration Date</label>
+            <div class="input-container">
+              <input
+                placeholder="Expiration Date"
+                name="expiration_date"
+                ngbDatepicker
+                class="filters-expiration"
+                [(ngModel)]="filter_expiration_date"
+                #d3="ngbDatepicker"
+                (ngModelChange)="applyFilters()"
+              />
+              <button (click)="d3.toggle()" type="button"><img src="assets/images/baseline-date_range-grey-24px.svg" alt=""></button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2 p-0">
+        <mat-form-field appearance="outline">
+            <mat-label>Subscription</mat-label>
+            <input matInput [(ngModel)]="filter_subscription" (ngModelChange)="applyFilters()">
+        </mat-form-field>
+    </div>
+    <div class="col-md-3 p-0 ps-5 d-inline-flex">
+        <div class="form-check form-switch p-0 pt-2">
+            <input class="form-check-input mt-1" type="checkbox" [(ngModel)]="filter_active" (ngModelChange)="applyFilters()">
+            <label class="form-check-label" for="active">Active</label>
+        </div>
+
+        <div class="pt-2 ps-md-5 ms-md-2">
+            <button class="border-0 clear-btn" (click)="clearFilters()">
+                CLEAR FILTER
+            </button>
+        </div>
+    </div>
+</div>

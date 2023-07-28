@@ -1,0 +1,124 @@
+<div class="drawer " [ngClass]="{ open: isOpen }">
+  <div class="container d-flex flex-column p-md-4">
+    <div class="row">
+      <h3 class="col-md-6 drawer-title">New Client</h3>
+      <div class="col-md-6 text-end">
+        <button class="close-button" (click)="closeDrawer()">
+          <img src="assets/images/outline-close-24px.svg" alt="" />
+        </button>
+      </div>
+    </div>
+    <div class="row mb-1">
+      <div class="col-md-6 input-wrapper p-0">
+        <label class="top-label" *ngIf="first_name" for="first_name">First Name</label>
+        <input type="text" name="first_name" [(ngModel)]="first_name" placeholder="First Name">
+      </div>
+      <div class="col-md-6 input-wrapper p-0">
+        <label class="top-label" *ngIf="last_name" for="last_name">Last Name</label>
+        <input type="text" name="last_name" [(ngModel)]="last_name" placeholder="Last Name">
+      </div>
+    </div>
+    <div class="row mb-1">
+      <div class="col-md-6 input-wrapper p-0">
+        <div class="datepicker-container">
+          <label class="top-label" *ngIf="date_of_birth" for="date_of_birth">Date of birth</label>
+          <div class="input-container">
+            <input
+              placeholder="Date of birth"
+              name="date_of_birth"
+              [(ngModel)]="date_of_birth"
+              ngbDatepicker
+              #d="ngbDatepicker" readonly
+            />
+            <button (click)="d.toggle()" type="button"><img src="assets/images/baseline-date_range-grey-24px.svg" alt=""></button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 input-wrapper p-0">
+        <div class="row pt-4">
+          <label class="col-md-6">
+            <input type="radio" name="gender" value="male" [(ngModel)]="gender">
+            Male
+          </label>
+          <label class="col-md-6">
+            <input type="radio" name="gender" value="female" [(ngModel)]="gender">
+            Female
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-1">
+      <div class="col-md-12 input-wrapper p-0">
+        <label class="top-label" *ngIf="email" for="email">Email</label>
+        <input type="text" class="w-full" name="email" [(ngModel)]="email" placeholder="Email">
+      </div>
+    </div>
+    <div class="row mb-1">
+      <div class="col-md-12 input-wrapper p-0">
+        <label class="top-label" *ngIf="address" for="address">Address</label>
+        <input type="text" class="w-full" name="address" [(ngModel)]="address" placeholder="Address">
+      </div>
+    </div>
+    <div class="row mb-1">
+      <div *ngFor="let phoneNumber of phoneNumbers; let i = index" class="added-phone p-0">
+        <div class="col-md-12 input-wrapper p-0">
+          <input type="text" [(ngModel)]="phoneNumbers[i]" class="added-phone-number" readonly>
+          <button class="phone-button" (click)="removePhoneNumber(i)"><img src="assets/images/outline-close-grey-24px.svg" alt=""></button>
+        </div>
+      </div>
+      <div class="col-md-12 input-wrapper p-0">
+        <label class="top-label" *ngIf="phone" for="phone">Phone</label>
+        <input type="text" name="phone" [(ngModel)]="phone" placeholder="Phone">
+      </div>
+      <div class="col-md-12 input-wrapper p-0">
+        <button class="phone-button pt-3" (click)="addPhoneNumber()"><img src="assets/images/outline-add-orange-24px.svg" alt="add-phone-number"><span>Add Phone</span></button>
+      </div>
+    </div>
+    <div class="row mb-1">
+      <div class="col-md-6 input-wrapper p-0">
+        <label class="top-label" *ngIf="subscription" for="subscription">Subscription</label>
+        <input placeholder="Subscription" [(ngModel)]="subscription" />
+      </div>
+      <div class="col-md-6 input-wrapper p-0">
+        <div class="datepicker-container">
+          <label class="top-label" *ngIf="expiration_date" for="expiration_date">Expiration Date</label>
+          <div class="input-container">
+            <input
+              placeholder="Expiration Date"
+              name="expiration_date"
+              [(ngModel)]="expiration_date"
+              ngbDatepicker
+              #d2="ngbDatepicker" readonly
+            />
+            <button (click)="d2.toggle()" type="button"><img src="assets/images/baseline-date_range-grey-24px.svg" alt=""></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-1">
+      <div class="col-md-12 input-wrapper p-0">
+        <div class="form-check form-switch p-0">
+          <input class="form-check-input mt-1" type="checkbox" [(ngModel)]="active" id="active">
+          <label class="form-check-label" for="active">Active</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-auto" *ngIf="saveTriggered">
+      <div class="col-md-12">
+        <div *ngIf="!first_name || !last_name || !gender">
+          <p class="error-message">First Name, Last Name, and Gender are required.</p>
+        </div>
+        <div *ngIf="subscription && !expiration_date">
+          <p class="error-message">Expiration Date is required if Subscription exists.</p>
+        </div>  
+      </div>
+    </div>
+    <div class="row mt-auto">
+      <div class="col-md-12">
+        <button class="save-button" (click)="saveClient()">Save</button>
+      </div>
+    </div>
+    
+  </div>
+</div>

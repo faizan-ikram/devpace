@@ -1,0 +1,117 @@
+$color_1: #ffffff;
+$color_2: grey;
+$color_3: #f7911d;
+$background-color_1: #ffffff;
+$background-color_2: grey;
+$background-color_3: #f7911d;
+$datepicker-icon-width: 24px;
+
+.drawer {
+  position: fixed;
+  top: 0;
+  right: -35%;
+  width: 35%;
+  height: 100vh;
+  background-color: $background-color_1;
+  transition: right 0.3s ease;
+  z-index: 10;
+  .container {
+    min-height: 100vh;
+  }
+}
+
+.drawer.open {
+  right: 0;
+
+  &:body {
+    box-shadow: black;
+  }
+}
+
+.close-button {
+  margin: 8px;
+  align-self: flex-end;
+  padding: 4px 8px;
+  color: $color_1;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+  font-size: 14px;
+  background-color: $background-color_1;
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.top-label {
+  position: absolute;
+  top: 0.2ex;
+  z-index: 1;
+  left: 2em;
+  background-color: $background-color_1;
+  color: $color_2;
+  padding: 0 5px;
+}
+
+input:not([type=radio]) {
+  border: 1px solid lightgray;
+  position: relative;
+  // width: 200px;
+  margin: 10px;
+  line-height: 5ex;
+
+  &:focus,
+  &:focus-visible {
+    border: 1px solid lightgray;
+    outline: none !important;
+  }
+  
+  &.w-full{
+    width: 90%;
+  }
+}
+
+.datepicker-container {
+  .input-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    button {
+      position: absolute;
+      right: 20%;
+      border: none;
+      background-color: $background-color_1;
+    }
+  }
+}
+
+.phone-button {
+  background-color: $background-color_1;
+  border: none;
+  span {
+    color: $color_3;
+  }
+}
+
+input.form-check-input {
+  &:checked {
+    background-color: $background-color_3;
+  }
+  &:focus {
+    box-shadow: none;
+  }
+}
+
+.save-button {
+  color: $color_1;
+  background-color: $background-color_3;
+  border: none;
+  padding: 4px 75px 4px 75px;
+}
+
+.error-message {
+  color: red;
+  font-size: 10px;
+}

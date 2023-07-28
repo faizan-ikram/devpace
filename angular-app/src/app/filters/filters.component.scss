@@ -1,0 +1,31 @@
+.search-icon {
+    position: absolute;
+    top: 1.9ex;
+    right: 0px;
+    transform: translateY(-50%);
+    transition: opacity 0.2s;
+    opacity: 0;
+    z-index: 2;
+  
+    &.show {
+      opacity: 1;
+    }
+  }
+  
+  .primary-search-icon {
+    position: relative;
+    z-index: 3;
+  }
+  
+  .search-input {
+    position: relative;
+    z-index: 1;
+
+    &:hover, &:focus, &:focus-visible {
+        border-color: #f7911d;
+    }
+
+    &:focus-visible {
+        outline: none;
+    }
+  }

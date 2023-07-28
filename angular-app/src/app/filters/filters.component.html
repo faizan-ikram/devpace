@@ -1,0 +1,8 @@
+<div class="search-bar float-end">
+    <img src="assets/images/baseline-advanced_search-24px.svg" class="" [hidden]="!showSearch" (click)="onAdvancedFiltersClick()">
+
+    <img src="assets/images/baseline-search-24px.svg" class="primary-search-icon" (click)="toggleSearch()" [hidden]="showSearch">
+    <input #searchInput class="search-input" type="text" placeholder="" [(ngModel)]="searchText"
+           (input)="onInputChanged()" [hidden]="!showSearch" (focusout)="onInputBlur()">
+    <img src="assets/images/baseline-search-24px.svg" class="search-icon" [ngClass]="{ 'show': showSearch }">
+</div>
